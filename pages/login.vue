@@ -49,6 +49,7 @@
 import Notification from '~/components/Notification'
 
 export default {
+    middleware: 'guest',
   components: {
     Notification,
   },
@@ -62,6 +63,7 @@ export default {
   },
 
   methods: {
+
     async login() {
       try {
         await this.$auth.loginWith('local', {
