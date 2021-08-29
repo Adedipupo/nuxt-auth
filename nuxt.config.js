@@ -12,8 +12,26 @@ export default {
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      {
+        rel: 'stylesheet',
+        href: 'https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css'
+      }
     ]
+  },
+  axios: {
+    baseURL: 'http://127.0.0.1:3333/api'
+  },
+
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: 'login', method: 'post', propertyName: 'data.token' },
+          user: { url: 'me', method: 'get', propertyName: 'data' },
+          logout: false
+        }
+      }
+    }
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -33,6 +51,8 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@nuxtjs/axios',
+    '@nuxtjs/auth'
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
